@@ -31,7 +31,7 @@ public class FileService {
     BufferedImage bufferImg = ImageIO.read(inpByte);
     BufferedImage newBufferedImg = handler.changeColor(bufferImg);
     var temp = new ByteArrayOutputStream();
-    ImageIO.write(newBufferedImg, "jpg", temp);
+    ImageIO.write(newBufferedImg, "png", temp);
     byte[] result = temp.toByteArray();
     var transformed = generatePresignedUrl(result, TRANSFORMED_PREFIX + fileId);
     return FileResponse.builder().originalUrl(original).transformedUrl(transformed).build();
